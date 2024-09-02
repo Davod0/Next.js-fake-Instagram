@@ -17,7 +17,6 @@ export default function Home() {
             />
             <LikeButton />
           </div>
-
           <h2 className="text-3xl">{post.title}</h2>
         </div>
       ))}
