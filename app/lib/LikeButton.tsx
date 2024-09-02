@@ -1,14 +1,23 @@
 "use client";
 
-import { useState } from "react";
+import { useContext } from "react";
+import { Post } from "../data";
+import { PostContext } from "./PostsProvider";
 
-export default function LikeButton() {
-  const [isLiked, setIsLiked] = useState(false);
+interface Props {
+  post: Post;
+}
+
+export default function LikeButton(props: Props) {
+  // const [isLiked, setIsLiked] = useState(false);
+  const { likedPosts, toggleLikedPost } = useContext(PostContext);
+
+  const isLiked = likedPosts.some((postId) => postId === props.post.id);
 
   return (
     <span
       className="absolute right-4 bottom-4 text-4xl drop-shadow-md shadow-black cursor-pointer"
-      onClick={() => setIsLiked(!isLiked)}
+      onClick={() => toggleLikedPost(props.post.id)}
     >
       {isLiked ? "❤️" : "🤍"}
     </span>
