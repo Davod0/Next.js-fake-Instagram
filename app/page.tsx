@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { mockedPosts } from "./data";
+import LikeButton from "./lib/LikeButton";
 
 export default function Home() {
   return (
@@ -14,10 +15,9 @@ export default function Home() {
               width={400}
               height={400}
             />
-            <span className="absolute right-4 bottom-4 text-4xl drop-shadow-md shadow-black">
-              🤍
-            </span>
+            <LikeButton />
           </div>
+
           <h2 className="text-3xl">{post.title}</h2>
         </div>
       ))}
