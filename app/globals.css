@@ -30,4 +30,9 @@ body {
   .text-balance {
     text-wrap: balance;
   }
+
+
+.bottom-inset-shadow{
+  box-shadow: inset 0px 0px 0px 0px black;
+ }
 }
