@@ -1,8 +1,7 @@
 "use client";
 
-import { useContext } from "react";
 import { Post } from "../data";
-import { PostContext } from "./PostsProvider";
+import { UsedLikedPosts } from "./PostsProvider";
 
 interface Props {
   post: Post;
@@ -10,16 +9,14 @@ interface Props {
 
 export default function LikeButton(props: Props) {
   // const [isLiked, setIsLiked] = useState(false);
-  const { likedPosts, toggleLikedPost } = useContext(PostContext);
-
-  const isLiked = likedPosts.some((postId) => postId === props.post.id);
+  const { toggleLikedPost, getIsLikedPost } = UsedLikedPosts();
 
   return (
     <span
       className="absolute right-4 bottom-4 text-4xl drop-shadow-md shadow-black cursor-pointer"
       onClick={() => toggleLikedPost(props.post.id)}
     >
-      {isLiked ? "❤️" : "🤍"}
+      {getIsLikedPost(props.post.id) ? "❤️" : "🤍"}
     </span>
   );
 }
